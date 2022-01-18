@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
@@ -24,8 +21,6 @@ namespace CreatioAppsConfig
                 return Application.StartupPath;
             }
         }
-
-        Encoding enc8 = Encoding.UTF8;
 
         public AppsConfigs()
         {
@@ -47,6 +42,7 @@ namespace CreatioAppsConfig
         public void ReadDirectory(string path)
         {
             var folders = Directory.GetDirectories(path);
+            
             if (folders.Any() && folders.Length > 0)
             {
                 var data = new List<ConnectionStrings>();
@@ -61,16 +57,14 @@ namespace CreatioAppsConfig
 
                 if (data.Any())
                 {
-                    FillGrid(OperateData(data));
+                    FillGrid(OperateData(data), dataGridView2);
                 }
             }
         }
 
         private ConnectionStrings GetDataFrommFile(string filePath)
         {
-            Console.WriteLine("Reading with Stream");
-            XmlSerializer serializer =
-            new XmlSerializer(typeof(ConnectionStrings));
+            XmlSerializer serializer = new XmlSerializer(typeof(ConnectionStrings));
             ConnectionStrings cs;
             using (Stream reader = new FileStream(filePath, FileMode.Open))
             {
@@ -78,6 +72,17 @@ namespace CreatioAppsConfig
             }
             cs.Path = filePath;
             return cs;
+        }
+
+        private T DeserializeXML<T>(string xml)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            T result;
+            using (TextReader reader = new StringReader(xml))
+            {
+                result = (T)serializer.Deserialize(reader);
+            }
+            return result;
         }
 
         private List<ConfigData> OperateData(List<ConnectionStrings> data)
@@ -124,11 +129,11 @@ namespace CreatioAppsConfig
                                     }
                                     if (cfg[0].Contains("port"))
                                     {
-                                        configData.RedisPort = cfg[1];
+                                        configData.RedisPort = int.Parse(cfg[1]);
                                     }
                                     if (cfg[0].Contains("db"))
                                     {
-                                        configData.RedisDB = cfg[1];
+                                        configData.RedisDB = int.Parse(cfg[1]);
                                     }
                                 }
                             }
@@ -137,42 +142,40 @@ namespace CreatioAppsConfig
                 }
                 lstCfg.Add(configData);
             }
-            return lstCfg.OrderBy(x => int.Parse(x.RedisDB)).ToList(); 
+            return lstCfg.OrderBy(x => x.RedisDB).ToList(); 
         }
 
-        private void FillGrid(List<ConfigData> data)
+        private void FillGrid<T>(List<T> data, DataGridView dataGridView)
         {
-            dataGridView2.Rows.Clear();
-            dataGridView2.Columns.Clear();
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.Columns.Clear();
+            dataGridView.Rows.Clear();
+            var type = data.FirstOrDefault();
+            var someType = type.GetType();
 
-            dataGridView2.Columns.Add("DBHost", "DBHost");
-            dataGridView2.Columns.Add("DBName", "DB Name");
-            dataGridView2.Columns.Add("RedisHost", "Redis Host");
-            dataGridView2.Columns.Add("RedisPort", "Redis Port");
-            dataGridView2.Columns.Add("RedisDB", "Redis DB");
-            dataGridView2.Columns.Add("Path", "Path");
+            foreach (var item in someType.GetProperties())
+            {
+                dataGridView.Columns.Add(item.Name, item.Name);
+            }
 
             foreach (var item in data)
             {
-                var row = new DataGridViewRow();
-                row.CreateCells(dataGridView2);
-                row.Cells[0].Value = item.DBHost;
-                row.Cells[1].Value = item.DBName;
-                row.Cells[2].Value = item.RedisHost;
-                row.Cells[3].Value = item.RedisPort;
-                row.Cells[4].Value = item.RedisDB;
-                row.Cells[5].Value = item.Path;
-                dataGridView2.Rows.Add(row);
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+                foreach (DataGridViewColumn col in dataGridView.Columns)
+                {
+                    row.Cells[col.Index].Value = someType.GetProperty(col.Name).GetValue(item, null);
 
+                }
+                dataGridView.Rows.Add(row);
             }
-
-            
         }
 
         private void AppsConfigs_Load(object sender, EventArgs e)
         {
             ReadConfig();
-            LoadIISData();
+            LoadIISData(" list SITE /xml", AddSiteData);
+            LoadIISData(" list WP /xml", AddProcessData);
         }
 
         private void ReadConfig()
@@ -191,9 +194,7 @@ namespace CreatioAppsConfig
                             PathText.Text = config.Path;
                             ReadDirectory(config.Path);
                         }
-                        
                     }
-                    
                 }
             }
         }
@@ -211,10 +212,9 @@ namespace CreatioAppsConfig
                 Byte[] text = new UTF8Encoding(true).GetBytes(JsonConvert.SerializeObject(appsPath));
                 fs.Write(text, 0, text.Length);
             }
-
         }
 
-        private void LoadIISData()
+        private void LoadIISData(string command, Func<string, object> method)
         {
             var path = "";
             var windir = Environment.GetEnvironmentVariable("windir");
@@ -233,25 +233,20 @@ namespace CreatioAppsConfig
             if (!string.IsNullOrEmpty(path))
             {
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
-                Process p = Process.Start(path, " list site");
+                Process p = Process.Start(path, command);
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.StandardOutputEncoding = Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.OEMCodePage);
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.RedirectStandardError = true;
-
                 p.Start();
-
                 string output = p.StandardOutput.ReadToEnd();
-                
                 string error = p.StandardError.ReadToEnd();
-
                 p.WaitForExit();
 
                 if (string.IsNullOrEmpty(error) && !string.IsNullOrEmpty(output))
                 {
-                    AddSiteData(output);
+                    method(output);
                 } else
                 {
                     string message = error;
@@ -265,48 +260,62 @@ namespace CreatioAppsConfig
                     }
                 }
             }
-            
         }
 
-        private void AddSiteData(string data)
+        private object AddSiteData(string data)
         {
-            dataGridView1.Columns.Add("SiteName", "Site Name");
-            dataGridView1.Columns.Add("SiteBindings", "Site Bindings");
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            int i = 0;
-            foreach (var siteRow in data.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+            try
             {
-                try
-                {
-                    var arrayData = siteRow.Split(' ');
-                    DataGridViewRow row = new DataGridViewRow();
-                    row.CreateCells(dataGridView1);
-                    row.Cells[0].Value = arrayData[1];
-                    row.Cells[1].Value = arrayData[2];
-                    dataGridView1.Rows.Insert(i++, row);
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    string message = "Please run programm as admin";
-                    string caption = "Error Detected";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    DialogResult result;
-                    result = MessageBox.Show(message, caption, buttons);
-                    if (result == System.Windows.Forms.DialogResult.OK)
-                    {
-                        this.Close();
-                        
-                    }
-                    break;
-                }
-                
+                var sites = DeserializeXML<SiteData.Appcmd>(data);
+                var gridData = sites.SITE.OrderBy(x => x.Id).ToList();
+                FillGrid(gridData, dataGridView1);
             }
+            catch (Exception)
+            {
+                string message = "Please run programm as admin";
+                string caption = "Error Detected";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.Close();
+
+                }
+            }
+            return null;
+        }
+
+        private object AddProcessData(string data)
+        {
+            try
+            {
+                var sites = DeserializeXML<WorkingProcess.Appcmd>(data);
+                var gridData = sites.WP.OrderBy(x => x.ProcessId).ToList();
+                FillGrid(gridData, dataGridView3);
+            }
+            catch (Exception)
+            {
+                string message = "Please run programm as admin";
+                string caption = "Error Detected";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            return null;
         }
 
         private void dataGridView2_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0) return;
+
             var file = (string)dataGridView2.Rows[e.RowIndex].Cells["Path"].Value;
             Form2 editForm = new Form2();
+            editForm.FormClosing += EditForm_FormClosing;
             editForm.Text = file;
             editForm.FileName = file;
             var data = GetDataFrommFile(file);
@@ -315,11 +324,12 @@ namespace CreatioAppsConfig
             bindingSource.DataSource = data.Add;
 
             editForm.bindingSource = bindingSource;
-            DialogResult result = editForm.ShowDialog();
-            if (result == DialogResult.Cancel)
-            {
-                ReadConfig();
-            }
+            editForm.ShowDialog();
+        }
+
+        private void EditForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.ReadConfig();
         }
     }
 }

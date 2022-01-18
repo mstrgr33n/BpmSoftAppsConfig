@@ -1,10 +1,55 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace CreatioAppsConfig
 {
+
+    namespace SiteData
+    {
+        [XmlRoot(ElementName = "SITE")]
+        public class SITE
+        {
+            [XmlAttribute(AttributeName = "SITE.ID")]
+            public int Id { get; set; }
+            [XmlAttribute(AttributeName = "SITE.NAME")]
+            public string Name { get; set; }
+            [XmlAttribute(AttributeName = "bindings")]
+            public string Bindings { get; set; }
+            [XmlAttribute(AttributeName = "state")]
+            public string State { get; set; }
+        }
+
+        [XmlRoot(ElementName = "appcmd")]
+        public class Appcmd
+        {
+            [XmlElement(ElementName = "SITE")]
+            public List<SITE> SITE { get; set; }
+        }
+
+    }
+
+    namespace WorkingProcess
+    {
+        [XmlRoot(ElementName = "WP")]
+        public class WP
+        {
+            [XmlAttribute(AttributeName = "WP.NAME")]
+            public int ProcessId { get; set; }
+            [XmlAttribute(AttributeName = "APPPOOL.NAME")]
+            public string APPPOOL { get; set; }
+        }
+
+        [XmlRoot(ElementName = "appcmd")]
+        public class Appcmd
+        {
+            [XmlElement(ElementName = "WP")]
+            public List<WP> WP { get; set; }
+        }
+
+    }
+
+
     public class ConfigProram
     {
         public string Path { get; set; }
@@ -33,8 +78,8 @@ namespace CreatioAppsConfig
         public string DBHost { get; set; }
         public string DBName { get; set; }
         public string RedisHost { get; set; }
-        public string RedisPort { get; set; }
-        public string RedisDB { get; set; }
+        public int RedisPort { get; set; }
+        public int RedisDB { get; set; }
         public string Path { get; set; }
     }
 
@@ -92,6 +137,5 @@ namespace CreatioAppsConfig
                 ResetBindings();
             }
         }
-
     }
 }
