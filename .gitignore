@@ -1,2 +1,4 @@
 .vs
 CreatioAppsConfig/bin
+CreatioAppsConfig/obj
+CreatioAppsConfig/obj/Debug/net5.0-windows/CreatioAppsConfig.csproj.AssemblyReference.cache
