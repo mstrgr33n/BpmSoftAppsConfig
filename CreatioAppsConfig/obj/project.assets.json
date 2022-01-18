@@ -146,19 +146,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\konev\\.nuget\\packages\\": {}
+    "C:\\Users\\000001\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.0.0.2",
     "restore": {
-      "projectUniqueName": "F:\\C#\\CreatioAppsConfig\\CreatioAppsConfig\\CreatioAppsConfig.csproj",
+      "projectUniqueName": "D:\\project\\CreatioAppsConfig\\CreatioAppsConfig\\CreatioAppsConfig.csproj",
       "projectName": "CreatioAppsConfig",
-      "projectPath": "F:\\C#\\CreatioAppsConfig\\CreatioAppsConfig\\CreatioAppsConfig.csproj",
-      "packagesPath": "C:\\Users\\konev\\.nuget\\packages\\",
-      "outputPath": "F:\\C#\\CreatioAppsConfig\\CreatioAppsConfig\\obj\\",
+      "projectPath": "D:\\project\\CreatioAppsConfig\\CreatioAppsConfig\\CreatioAppsConfig.csproj",
+      "packagesPath": "C:\\Users\\000001\\.nuget\\packages\\",
+      "outputPath": "D:\\project\\CreatioAppsConfig\\CreatioAppsConfig\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\konev\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\000001\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -203,24 +203,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.13, 5.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -229,7 +211,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

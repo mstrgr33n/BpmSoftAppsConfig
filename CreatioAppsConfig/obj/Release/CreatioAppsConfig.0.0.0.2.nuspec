@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CreatioAppsConfig</id>
+    <version>0.0.0.2</version>
+    <authors>mr. Gr33n</authors>
+    <description>Show Creatio Apps config from files and IIS</description>
+    <copyright>SmartCapital</copyright>
+    <dependencies>
+      <group targetFramework="net5.0-windows7.0">
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Encoding.CodePages" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net5.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="D:\project\CreatioAppsConfig\CreatioAppsConfig\bin\Release\net5.0-windows\CreatioAppsConfig.runtimeconfig.json" target="lib\net5.0-windows7.0\CreatioAppsConfig.runtimeconfig.json" />
+    <file src="D:\project\CreatioAppsConfig\CreatioAppsConfig\bin\Release\net5.0-windows\CreatioAppsConfig.dll" target="lib\net5.0-windows7.0\CreatioAppsConfig.dll" />
+  </files>
+</package>
