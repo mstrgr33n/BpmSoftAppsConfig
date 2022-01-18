@@ -1,4 +1,4 @@
 .vs
 CreatioAppsConfig/bin
 CreatioAppsConfig/obj
-
+CreatioAppsConfig/obj/*.*
