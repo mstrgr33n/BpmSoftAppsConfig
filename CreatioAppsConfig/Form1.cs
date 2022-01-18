@@ -267,6 +267,7 @@ namespace CreatioAppsConfig
             try
             {
                 var sites = DeserializeXML<SiteData.Appcmd>(data);
+                if (sites.SITE.Count == 0) return null;
                 var gridData = sites.SITE.OrderBy(x => x.Id).ToList();
                 FillGrid(gridData, dataGridView1);
             }
@@ -291,6 +292,7 @@ namespace CreatioAppsConfig
             try
             {
                 var sites = DeserializeXML<WorkingProcess.Appcmd>(data);
+                if (sites.WP.Count == 0) return null;
                 var gridData = sites.WP.OrderBy(x => x.ProcessId).ToList();
                 FillGrid(gridData, dataGridView3);
             }
