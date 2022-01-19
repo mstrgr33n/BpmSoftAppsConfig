@@ -46,7 +46,6 @@ namespace CreatioAppsConfig
                 DialogResult result;
                 result = MessageBox.Show(message, caption, buttons);
             }
-            
         }
 
         private void Form2_Load(object sender, EventArgs e)
