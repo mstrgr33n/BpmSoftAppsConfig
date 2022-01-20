@@ -2,4 +2,5 @@
 CreatioAppsConfig/bin
 CreatioAppsConfig/obj
 CreatioAppsConfig/obj/Debug/net5.0-windows/CreatioAppsConfig.csproj.AssemblyReference.cache
-CreatioAppsConfig/obj/Debug/net5.0-windows/*.*
+*.cache
+CreatioAppsConfig/obj/Debug/net5.0-windows/*.cache

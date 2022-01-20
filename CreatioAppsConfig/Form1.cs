@@ -218,8 +218,8 @@ namespace CreatioAppsConfig
         {
             var path = "";
             var windir = Environment.GetEnvironmentVariable("windir");
-            var path32 = $@"{windir}\system32\inetsrv\appcmd.exe";
-            var path64 = $@"{windir}\syswow64\inetsrv\appcmd.exe";
+            var path32 = $"{windir}\\system32\\inetsrv\appcmd.exe";
+            var path64 = $"{windir}\\syswow64\\inetsrv\appcmd.exe";
 
             if (File.Exists(path32))
             {
