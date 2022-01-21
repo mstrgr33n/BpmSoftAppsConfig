@@ -33,20 +33,24 @@ namespace CreatioAppsConfig
             this.PathDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.PathButton = new System.Windows.Forms.Button();
             this.PathText = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ConfigFileGridView = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IISSiteGridView = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.APPPOOLGridView = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.WorkingSiteGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.ConfigFileGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IISSiteGridView)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.APPPOOLGridView)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorkingSiteGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // PathButton
@@ -70,21 +74,21 @@ namespace CreatioAppsConfig
             this.PathText.Size = new System.Drawing.Size(1009, 23);
             this.PathText.TabIndex = 1;
             // 
-            // dataGridView2
+            // ConfigFileGridView
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView2.Size = new System.Drawing.Size(1076, 692);
-            this.dataGridView2.TabIndex = 3;
-            this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
+            this.ConfigFileGridView.AllowUserToAddRows = false;
+            this.ConfigFileGridView.AllowUserToDeleteRows = false;
+            this.ConfigFileGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ConfigFileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ConfigFileGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ConfigFileGridView.Location = new System.Drawing.Point(3, 3);
+            this.ConfigFileGridView.Name = "ConfigFileGridView";
+            this.ConfigFileGridView.ReadOnly = true;
+            this.ConfigFileGridView.RowTemplate.Height = 25;
+            this.ConfigFileGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ConfigFileGridView.Size = new System.Drawing.Size(1076, 692);
+            this.ConfigFileGridView.TabIndex = 3;
+            this.ConfigFileGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
             // 
             // tabControl1
             // 
@@ -93,6 +97,7 @@ namespace CreatioAppsConfig
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 41);
             this.tabControl1.Name = "tabControl1";
@@ -103,7 +108,7 @@ namespace CreatioAppsConfig
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dataGridView2);
+            this.tabPage1.Controls.Add(this.ConfigFileGridView);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -114,7 +119,7 @@ namespace CreatioAppsConfig
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.IISSiteGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -123,22 +128,46 @@ namespace CreatioAppsConfig
             this.tabPage2.Text = "IIS Site Data";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // IISSiteGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1076, 692);
-            this.dataGridView1.TabIndex = 0;
+            this.IISSiteGridView.AllowUserToAddRows = false;
+            this.IISSiteGridView.AllowUserToDeleteRows = false;
+            this.IISSiteGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.IISSiteGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IISSiteGridView.Location = new System.Drawing.Point(3, 3);
+            this.IISSiteGridView.Name = "IISSiteGridView";
+            this.IISSiteGridView.ReadOnly = true;
+            this.IISSiteGridView.RowTemplate.Height = 25;
+            this.IISSiteGridView.Size = new System.Drawing.Size(1076, 692);
+            this.IISSiteGridView.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.APPPOOLGridView);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1082, 698);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "IIS Pool";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // APPPOOLGridView
+            // 
+            this.APPPOOLGridView.AllowUserToAddRows = false;
+            this.APPPOOLGridView.AllowUserToDeleteRows = false;
+            this.APPPOOLGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.APPPOOLGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.APPPOOLGridView.Location = new System.Drawing.Point(3, 3);
+            this.APPPOOLGridView.Name = "APPPOOLGridView";
+            this.APPPOOLGridView.ReadOnly = true;
+            this.APPPOOLGridView.RowTemplate.Height = 25;
+            this.APPPOOLGridView.Size = new System.Drawing.Size(1076, 692);
+            this.APPPOOLGridView.TabIndex = 0;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.dataGridView3);
+            this.tabPage3.Controls.Add(this.WorkingSiteGridView);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -147,18 +176,18 @@ namespace CreatioAppsConfig
             this.tabPage3.Text = "Working Site";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // WorkingSiteGridView
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView3.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowTemplate.Height = 25;
-            this.dataGridView3.Size = new System.Drawing.Size(1076, 692);
-            this.dataGridView3.TabIndex = 0;
+            this.WorkingSiteGridView.AllowUserToAddRows = false;
+            this.WorkingSiteGridView.AllowUserToDeleteRows = false;
+            this.WorkingSiteGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.WorkingSiteGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WorkingSiteGridView.Location = new System.Drawing.Point(3, 3);
+            this.WorkingSiteGridView.Name = "WorkingSiteGridView";
+            this.WorkingSiteGridView.ReadOnly = true;
+            this.WorkingSiteGridView.RowTemplate.Height = 25;
+            this.WorkingSiteGridView.Size = new System.Drawing.Size(1076, 692);
+            this.WorkingSiteGridView.TabIndex = 0;
             // 
             // AppsConfigs
             // 
@@ -172,13 +201,15 @@ namespace CreatioAppsConfig
             this.Name = "AppsConfigs";
             this.Text = "Creatio Apps Config";
             this.Load += new System.EventHandler(this.AppsConfigs_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConfigFileGridView)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IISSiteGridView)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.APPPOOLGridView)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorkingSiteGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,13 +220,15 @@ namespace CreatioAppsConfig
         private System.Windows.Forms.FolderBrowserDialog PathDialog;
         private System.Windows.Forms.Button PathButton;
         private System.Windows.Forms.TextBox PathText;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView ConfigFileGridView;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView IISSiteGridView;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView WorkingSiteGridView;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView APPPOOLGridView;
     }
 }
 

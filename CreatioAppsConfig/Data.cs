@@ -49,6 +49,30 @@ namespace CreatioAppsConfig
 
     }
 
+    namespace APPPOOL
+    {
+        [XmlRoot(ElementName = "APPPOOL")]
+        public class APPPOOL
+        {
+            [XmlAttribute(AttributeName = "APPPOOL.NAME")]
+            public string Name { get; set; }
+            [XmlAttribute(AttributeName = "PipelineMode")]
+            public string PipelineMode { get; set; }
+            [XmlAttribute(AttributeName = "RuntimeVersion")]
+            public string RuntimeVersion { get; set; }
+            [XmlAttribute(AttributeName = "state")]
+            public string State { get; set; }
+        }
+
+        [XmlRoot(ElementName = "appcmd")]
+        public class Appcmd
+        {
+            [XmlElement(ElementName = "APPPOOL")]
+            public List<APPPOOL> APPPOOL { get; set; }
+        }
+
+    }
+
 
     public class ConfigProram
     {

@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
 
 namespace CreatioAppsConfig
 {
@@ -29,7 +30,7 @@ namespace CreatioAppsConfig
 
         private void PathButton_Click(object sender, EventArgs e)
         {
-            dataGridView2.Rows.Clear();
+            ConfigFileGridView.Rows.Clear();
             var result = PathDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -57,7 +58,7 @@ namespace CreatioAppsConfig
 
                 if (data.Any())
                 {
-                    FillGrid(OperateData(data), dataGridView2);
+                    FillGrid(OperateData(data), ConfigFileGridView);
                 }
             }
         }
@@ -150,6 +151,7 @@ namespace CreatioAppsConfig
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.Columns.Clear();
             dataGridView.Rows.Clear();
+
             var type = data.FirstOrDefault();
             var someType = type.GetType();
 
@@ -169,12 +171,23 @@ namespace CreatioAppsConfig
                 }
                 dataGridView.Rows.Add(row);
             }
+
+            AddColumnsInGrid(dataGridView);
+        }
+
+        private void AddColumnsInGrid(DataGridView dataGridView)
+        {
+            var methodName = $"{dataGridView.Name}AddButtons";
+            var SomeType = this.GetType();
+            MethodInfo m = SomeType.GetMethod(methodName);
+            m?.Invoke(this, new object[] { dataGridView });
         }
 
         private void AppsConfigs_Load(object sender, EventArgs e)
         {
             ReadConfig();
             LoadIISData(" list SITE /xml", AddSiteData);
+            LoadIISData(" list apppool /xml", AddPoolData);
             LoadIISData(" list WP /xml", AddProcessData);
         }
 
@@ -218,8 +231,8 @@ namespace CreatioAppsConfig
         {
             var path = "";
             var windir = Environment.GetEnvironmentVariable("windir");
-            var path32 = $"{windir}\\system32\\inetsrv\appcmd.exe";
-            var path64 = $"{windir}\\syswow64\\inetsrv\appcmd.exe";
+            var path32 = $"{windir}\\system32\\inetsrv\\appcmd.exe";
+            var path64 = $"{windir}\\syswow64\\inetsrv\\appcmd.exe";
 
             if (File.Exists(path32))
             {
@@ -236,6 +249,7 @@ namespace CreatioAppsConfig
                 Process p = Process.Start(path, command);
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
                 p.StartInfo.StandardOutputEncoding = Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.OEMCodePage);
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.RedirectStandardError = true;
@@ -269,7 +283,8 @@ namespace CreatioAppsConfig
                 var sites = DeserializeXML<SiteData.Appcmd>(data);
                 if (sites.SITE.Count == 0) return null;
                 var gridData = sites.SITE.OrderBy(x => x.Id).ToList();
-                FillGrid(gridData, dataGridView1);
+                FillGrid(gridData, IISSiteGridView);
+                IISSiteGridView.CellContentClick += IISSiteGridView_CellContentClick;
             }
             catch (Exception)
             {
@@ -287,6 +302,68 @@ namespace CreatioAppsConfig
             return null;
         }
 
+        private object AddPoolData(string data)
+        {
+            try
+            {
+                var sites = DeserializeXML<APPPOOL.Appcmd>(data);
+                if (sites.APPPOOL.Count == 0) return null;
+                var gridData = sites.APPPOOL.OrderBy(x => x.Name).ToList();
+                FillGrid(gridData, APPPOOLGridView);
+                APPPOOLGridView.CellContentClick += APPPOOLGridView_CellContentClick;
+            }
+            catch (Exception)
+            {
+                string message = "Please run programm as admin";
+                string caption = "Error Detected";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.Close();
+
+                }
+            }
+            return null;
+        }
+
+        private void APPPOOLGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var data = APPPOOLGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (data.GetType().Name == "DataGridViewButtonCell")
+            {
+                var instruction = data.Value;
+                var name = APPPOOLGridView.Rows[e.RowIndex].Cells["Name"].Value;
+                var command = $" {instruction} {name}";
+                LoadIISData(command, ShowResult);
+                LoadIISData(" list apppool /xml", AddPoolData);
+            }
+        }
+
+        private void IISSiteGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var data = IISSiteGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (data.GetType().Name == "DataGridViewButtonCell")
+            {
+                var instruction = data.Value;
+                var name = IISSiteGridView.Rows[e.RowIndex].Cells["Name"].Value;
+                var command = $" {instruction} {name}";
+                LoadIISData(command, ShowResult);
+                LoadIISData(" list SITE /xml", AddSiteData);
+            }
+        }
+
+        private object ShowResult(string result)
+        {
+            string caption = "Result";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            MessageBox.Show(result, caption, buttons);
+            return 0;
+        }
+
         private object AddProcessData(string data)
         {
             try
@@ -294,7 +371,7 @@ namespace CreatioAppsConfig
                 var sites = DeserializeXML<WorkingProcess.Appcmd>(data);
                 if (sites.WP.Count == 0) return null;
                 var gridData = sites.WP.OrderBy(x => x.ProcessId).ToList();
-                FillGrid(gridData, dataGridView3);
+                FillGrid(gridData, WorkingSiteGridView);
             }
             catch (Exception)
             {
@@ -315,7 +392,7 @@ namespace CreatioAppsConfig
         {
             if (e.RowIndex < 0) return;
 
-            var file = (string)dataGridView2.Rows[e.RowIndex].Cells["Path"].Value;
+            var file = (string)ConfigFileGridView.Rows[e.RowIndex].Cells["Path"].Value;
             Form2 editForm = new Form2();
             editForm.FormClosing += EditForm_FormClosing;
             editForm.Text = file;
@@ -333,5 +410,46 @@ namespace CreatioAppsConfig
         {
             this.ReadConfig();
         }
+
+        public void IISSiteGridViewAddButtons(DataGridView dataGridView)
+        {
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn()
+            {
+                HeaderText = " ",
+                Text = "START SITE",
+                Name = "StartSiteButton",
+                UseColumnTextForButtonValue = true
+            };
+            dataGridView.Columns.Add(btn);
+            btn = new DataGridViewButtonColumn()
+            {
+                HeaderText = " ",
+                Text = "STOP SITE",
+                Name = "StopSiteButton",
+                UseColumnTextForButtonValue = true
+            };
+            dataGridView.Columns.Add(btn);            
+        }
+
+        public void APPPOOLGridViewAddButtons(DataGridView dataGridView)
+        {
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn()
+            {
+                HeaderText = " ",
+                Text = "START APPPOOL",
+                Name = "StartAPPPOOLButton",
+                UseColumnTextForButtonValue = true
+            };
+            dataGridView.Columns.Add(btn);
+            btn = new DataGridViewButtonColumn()
+            {
+                HeaderText = " ",
+                Text = "STOP APPPOOL",
+                Name = "StopAPPPOOLButton",
+                UseColumnTextForButtonValue = true
+            };
+            dataGridView.Columns.Add(btn);
+        }
+
     }
 }
