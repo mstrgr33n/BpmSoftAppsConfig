@@ -246,14 +246,19 @@ namespace CreatioAppsConfig
             if (!string.IsNullOrEmpty(path))
             {
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                Process p = Process.Start(path, command);
-                p.StartInfo.UseShellExecute = false;
-                p.StartInfo.CreateNoWindow = true;
-                p.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
-                p.StartInfo.StandardOutputEncoding = Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.OEMCodePage);
-                p.StartInfo.RedirectStandardOutput = true;
-                p.StartInfo.RedirectStandardError = true;
-                p.Start();
+                ProcessStartInfo psi = new ProcessStartInfo()
+                {
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    FileName = path,
+                    Arguments = command,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    StandardOutputEncoding = Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.OEMCodePage)
+                };
+
+                Process p = Process.Start(psi);
                 string output = p.StandardOutput.ReadToEnd();
                 string error = p.StandardError.ReadToEnd();
                 p.WaitForExit();
@@ -268,7 +273,7 @@ namespace CreatioAppsConfig
                     MessageBoxButtons buttons = MessageBoxButtons.OK;
                     DialogResult result;
                     result = MessageBox.Show(message, caption, buttons);
-                    if (result == System.Windows.Forms.DialogResult.OK)
+                    if (result == DialogResult.OK)
                     {
                         this.Close();
                     }
@@ -294,7 +299,7 @@ namespace CreatioAppsConfig
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
                 result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     this.Close();
 
@@ -321,7 +326,7 @@ namespace CreatioAppsConfig
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
                 result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     this.Close();
 
@@ -332,7 +337,9 @@ namespace CreatioAppsConfig
 
         private void APPPOOLGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is not DataGridViewButtonColumn && e.RowIndex < 0) return;
+
             var data = APPPOOLGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
             if (data.GetType().Name == "DataGridViewButtonCell")
             {
@@ -346,7 +353,9 @@ namespace CreatioAppsConfig
 
         private void IISSiteGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is not DataGridViewButtonColumn && e.RowIndex < 0) return;
+
             var data = IISSiteGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
             if (data.GetType().Name == "DataGridViewButtonCell")
             {
@@ -380,7 +389,7 @@ namespace CreatioAppsConfig
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
                 result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     this.Close();
                 }
