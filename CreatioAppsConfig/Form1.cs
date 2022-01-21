@@ -280,6 +280,7 @@ namespace CreatioAppsConfig
         {
             try
             {
+                IISSiteGridView.CellContentClick -= IISSiteGridView_CellContentClick;
                 var sites = DeserializeXML<SiteData.Appcmd>(data);
                 if (sites.SITE.Count == 0) return null;
                 var gridData = sites.SITE.OrderBy(x => x.Id).ToList();
@@ -306,6 +307,7 @@ namespace CreatioAppsConfig
         {
             try
             {
+                APPPOOLGridView.CellContentClick -= APPPOOLGridView_CellContentClick;
                 var sites = DeserializeXML<APPPOOL.Appcmd>(data);
                 if (sites.APPPOOL.Count == 0) return null;
                 var gridData = sites.APPPOOL.OrderBy(x => x.Name).ToList();
@@ -336,9 +338,9 @@ namespace CreatioAppsConfig
             {
                 var instruction = data.Value;
                 var name = APPPOOLGridView.Rows[e.RowIndex].Cells["Name"].Value;
-                var command = $" {instruction} {name}";
+                var command = $" {instruction} \"{name}\"";
                 LoadIISData(command, ShowResult);
-                LoadIISData(" list apppool /xml", AddPoolData);
+                LoadIISData(" list APPPOOL /xml", AddPoolData);
             }
         }
 
@@ -350,7 +352,7 @@ namespace CreatioAppsConfig
             {
                 var instruction = data.Value;
                 var name = IISSiteGridView.Rows[e.RowIndex].Cells["Name"].Value;
-                var command = $" {instruction} {name}";
+                var command = $" {instruction} \"{name}\"";
                 LoadIISData(command, ShowResult);
                 LoadIISData(" list SITE /xml", AddSiteData);
             }
@@ -358,9 +360,7 @@ namespace CreatioAppsConfig
 
         private object ShowResult(string result)
         {
-            string caption = "Result";
-            MessageBoxButtons buttons = MessageBoxButtons.OK;
-            MessageBox.Show(result, caption, buttons);
+            MessageBox.Show(result);
             return 0;
         }
 
