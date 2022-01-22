@@ -13,7 +13,6 @@ namespace CreatioAppsConfig
 {
     internal class GetCreatioDistr
     {
-        HttpClient client = new HttpClient();
         private readonly string _defaultURI = @"https://ftp.bpmonline.com";
         private string _uri;
 

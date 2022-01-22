@@ -26,7 +26,6 @@ namespace CreatioAppsConfig
         public AppsConfigs()
         {
             InitializeComponent();
-            //LoadCreatioData();
         }
 
         private void LoadCreatioData()
@@ -467,5 +466,9 @@ namespace CreatioAppsConfig
             dataGridView.Columns.Add(btn);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadCreatioData();
+        }
     }
 }

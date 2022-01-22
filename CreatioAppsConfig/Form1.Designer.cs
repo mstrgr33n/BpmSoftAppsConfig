@@ -42,6 +42,7 @@ namespace CreatioAppsConfig
             this.APPPOOLGridView = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.WorkingSiteGridView = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ConfigFileGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -69,9 +70,9 @@ namespace CreatioAppsConfig
             this.PathText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PathText.Enabled = false;
-            this.PathText.Location = new System.Drawing.Point(12, 12);
+            this.PathText.Location = new System.Drawing.Point(206, 12);
             this.PathText.Name = "PathText";
-            this.PathText.Size = new System.Drawing.Size(1009, 23);
+            this.PathText.Size = new System.Drawing.Size(815, 23);
             this.PathText.TabIndex = 1;
             // 
             // ConfigFileGridView
@@ -189,11 +190,22 @@ namespace CreatioAppsConfig
             this.WorkingSiteGridView.Size = new System.Drawing.Size(1076, 692);
             this.WorkingSiteGridView.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Add apps";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AppsConfigs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 769);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.PathText);
             this.Controls.Add(this.PathButton);
@@ -229,6 +241,7 @@ namespace CreatioAppsConfig
         private System.Windows.Forms.DataGridView WorkingSiteGridView;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView APPPOOLGridView;
+        private System.Windows.Forms.Button button1;
     }
 }
 
