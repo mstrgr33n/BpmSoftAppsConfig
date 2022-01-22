@@ -26,14 +26,13 @@ namespace CreatioAppsConfig
         public AppsConfigs()
         {
             InitializeComponent();
-            // LoadCreatioData();
+            //LoadCreatioData();
         }
 
         private void LoadCreatioData()
         {
-            GetCreatioDistr req = new GetCreatioDistr(@"https://ftp.bpmonline.com/support/downloads/!Release/installation_files/");
-            req.SenRequest();
-
+            var form = new CreateApplication();
+            form.ShowDialog();
         }
 
         private void PathButton_Click(object sender, EventArgs e)

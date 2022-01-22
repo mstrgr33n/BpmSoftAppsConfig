@@ -14,17 +14,15 @@ namespace CreatioAppsConfig
     internal class GetCreatioDistr
     {
         HttpClient client = new HttpClient();
-        private readonly string _defaultURI = @"https://ftp.bpmonline.com/support/downloads/!Release/installation_files/";
-        private string _uri = "";
+        private readonly string _defaultURI = @"https://ftp.bpmonline.com";
+        private string _uri;
 
-        public GetCreatioDistr(string uri)
-        {
-            _uri = uri;
+        public string BaseUri { 
+            get { return string.IsNullOrEmpty(_uri) ? _defaultURI : _uri; }
+            set { _uri = $"{_defaultURI}{value}"; }
         }
 
-        public string BaseUri { get { return string.IsNullOrEmpty(_uri) ? _defaultURI : _uri; } }
-
-        public void SenRequest()
+        public HtmlAgilityPack.HtmlNodeCollection GetNodes()
         {
             var request = (HttpWebRequest)WebRequest.Create(BaseUri);
             request.Method = "GET";
@@ -35,10 +33,11 @@ namespace CreatioAppsConfig
 
             using var reader = new StreamReader(webStream);
             var data = reader.ReadToEnd();
-            MessageBox.Show(data);
+
+            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+            htmlDoc.LoadHtml(data);
+            var items = htmlDoc.DocumentNode.SelectNodes("//pre/a");
+            return items;
         }
-
-        
-
     }
 }
