@@ -30,13 +30,17 @@
         {
             this.VersionListBox = new System.Windows.Forms.ListBox();
             this.BundleListBox = new System.Windows.Forms.ListBox();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TempPathDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.TempPathText = new System.Windows.Forms.TextBox();
+            this.TempPathButton = new System.Windows.Forms.Button();
+            this.ProjectNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // VersionListBox
@@ -58,74 +62,101 @@
             this.BundleListBox.Size = new System.Drawing.Size(590, 394);
             this.BundleListBox.TabIndex = 2;
             // 
-            // textBox1
+            // TempPathText
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(13, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(661, 23);
-            this.textBox1.TabIndex = 3;
+            this.TempPathText.Enabled = false;
+            this.TempPathText.Location = new System.Drawing.Point(13, 13);
+            this.TempPathText.Name = "TempPathText";
+            this.TempPathText.Size = new System.Drawing.Size(661, 23);
+            this.TempPathText.TabIndex = 3;
             // 
-            // button1
+            // TempPathButton
             // 
-            this.button1.Location = new System.Drawing.Point(681, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Temp path";
-            this.button1.UseVisualStyleBackColor = true;
+            this.TempPathButton.Location = new System.Drawing.Point(681, 13);
+            this.TempPathButton.Name = "TempPathButton";
+            this.TempPathButton.Size = new System.Drawing.Size(107, 23);
+            this.TempPathButton.TabIndex = 4;
+            this.TempPathButton.Text = "Temp path";
+            this.TempPathButton.UseVisualStyleBackColor = true;
+            this.TempPathButton.Click += new System.EventHandler(this.TempPathButton_Click);
             // 
-            // textBox2
+            // ProjectNameBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(95, 451);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(358, 23);
-            this.textBox2.TabIndex = 5;
+            this.ProjectNameBox.Location = new System.Drawing.Point(95, 446);
+            this.ProjectNameBox.Name = "ProjectNameBox";
+            this.ProjectNameBox.Size = new System.Drawing.Size(358, 23);
+            this.ProjectNameBox.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 454);
+            this.label1.Location = new System.Drawing.Point(12, 451);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Project name";
             // 
-            // button2
+            // CreateButton
             // 
-            this.button2.Location = new System.Drawing.Point(608, 451);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Create";
-            this.button2.UseVisualStyleBackColor = true;
+            this.CreateButton.Location = new System.Drawing.Point(608, 451);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateButton.TabIndex = 7;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
-            // button3
+            // CancelButton
             // 
-            this.button3.Location = new System.Drawing.Point(713, 451);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelButton.Location = new System.Drawing.Point(713, 451);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 8;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar1,
+            this.toolStripStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 478);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // CreateApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 486);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.ProjectNameBox);
+            this.Controls.Add(this.TempPathButton);
+            this.Controls.Add(this.TempPathText);
             this.Controls.Add(this.BundleListBox);
             this.Controls.Add(this.VersionListBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateApplication";
             this.Text = "CreateApplication";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateApplication_FormClosing);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,12 +165,15 @@
         #endregion
         private System.Windows.Forms.ListBox VersionListBox;
         private System.Windows.Forms.ListBox BundleListBox;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.FolderBrowserDialog TempPathDialog;
+        private System.Windows.Forms.TextBox TempPathText;
+        private System.Windows.Forms.Button TempPathButton;
+        private System.Windows.Forms.TextBox ProjectNameBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button CreateButton;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
     }
 }
