@@ -30,8 +30,14 @@ namespace CreatioAppsConfig
 
         private void LoadCreatioData()
         {
-            var form = new CreateApplication();
+            var form = new CreateApplication(PathText.Text);
+            form.FormClosed += Form_FormClosed;
             form.ShowDialog();
+        }
+
+        private void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.AppsConfigs_Load(sender, e);
         }
 
         private void PathButton_Click(object sender, EventArgs e)
@@ -140,7 +146,10 @@ namespace CreatioAppsConfig
                                     }
                                     if (cfg[0].Contains("db"))
                                     {
-                                        configData.RedisDB = int.Parse(cfg[1]);
+                                        if (!string.IsNullOrEmpty(cfg[1]))
+                                            configData.RedisDB = int.Parse((cfg[1]).Trim());
+                                        else
+                                            configData.RedisDB = -1;
                                     }
                                 }
                             }
@@ -408,7 +417,7 @@ namespace CreatioAppsConfig
             if (e.RowIndex < 0) return;
 
             var file = (string)ConfigFileGridView.Rows[e.RowIndex].Cells["Path"].Value;
-            Form2 editForm = new Form2();
+            EditConnectionSrtings editForm = new EditConnectionSrtings();
             editForm.FormClosing += EditForm_FormClosing;
             editForm.Text = file;
             editForm.FileName = file;

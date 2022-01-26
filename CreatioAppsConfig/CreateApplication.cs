@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Compression;
 using System.IO;
@@ -19,12 +15,14 @@ namespace CreatioAppsConfig
         private GetCreatioDistr service = new();
         private WebClient client;
         private string ZipFilePath;
+        private string _basePath = "";
 
         List<KeyValuePair<string, string>> versionList = new List<KeyValuePair<string, string>>();
         List<KeyValuePair<string, string>> bundleList;
 
-        public CreateApplication()
+        public CreateApplication(string BasePash)
         {
+            _basePath = BasePash;
             InitializeComponent();
             Start();
         }
@@ -98,6 +96,7 @@ namespace CreatioAppsConfig
                 client = new WebClient();
                 client.DownloadFileCompleted += client_DownloadFileCompleted;
                 client.DownloadProgressChanged += client_DownloadProgressChanged;
+                
 
             }
 
@@ -112,6 +111,12 @@ namespace CreatioAppsConfig
 
         private void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
+            if (e.Cancelled)
+            {
+                client.Dispose();
+                File.Delete(ZipFilePath);
+                return;
+            }
             MessageBox.Show("File has been downloaded!");
             ExtractDistr();
         }
@@ -128,14 +133,17 @@ namespace CreatioAppsConfig
         private void ExtractDistr()
         {
             toolStripStatusLabel.Text = "Extracting...";
-            var extractPath = Path.Combine(TempPathText.Text, ProjectNameBox.Text);
+            
+            var extractPath = Path.Combine(_basePath, ProjectNameBox.Text);
             if (Directory.Exists(extractPath))
             {
                 Directory.CreateDirectory(extractPath);
             }
             ZipFile.ExtractToDirectory(ZipFilePath, extractPath);
             toolStripStatusLabel.Text = "Extracted!!!";
+            new WorkWithIIS().CreateSite(ProjectNameBox.Text, PortNumber.Value.ToString(), extractPath);
             ChangeFormEnableStatus();
+            this.Close();
         }
 
         private void ChangeFormEnableStatus()
@@ -146,6 +154,7 @@ namespace CreatioAppsConfig
             ProjectNameBox.Enabled = !ProjectNameBox.Enabled;
             TempPathButton.Enabled = !TempPathButton.Enabled;
             CancelButton.Enabled = !CancelButton.Enabled;
+            PortNumber.Enabled = !PortNumber.Enabled;
         }
 
         private void CreateApplication_FormClosing(object sender, FormClosingEventArgs e)

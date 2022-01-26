@@ -40,7 +40,10 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PortNumber = new System.Windows.Forms.NumericUpDown();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PortNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // VersionListBox
@@ -137,11 +140,44 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(460, 450);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 15);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Port";
+            // 
+            // PortNumber
+            // 
+            this.PortNumber.Location = new System.Drawing.Point(495, 447);
+            this.PortNumber.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.PortNumber.Minimum = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            this.PortNumber.Name = "PortNumber";
+            this.PortNumber.Size = new System.Drawing.Size(77, 23);
+            this.PortNumber.TabIndex = 11;
+            this.PortNumber.Value = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
+            // 
             // CreateApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.PortNumber);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.CreateButton);
@@ -157,6 +193,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateApplication_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PortNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +212,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown PortNumber;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CreatioAppsConfig
 {
-    partial class Form2
+    partial class EditConnectionSrtings
     {
         /// <summary>
         /// Required designer variable.

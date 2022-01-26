@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace CreatioAppsConfig
 {
-    public partial class Form2 : Form
+    public partial class EditConnectionSrtings : Form
     {
         private BindingSource _bs;
         public BindingSource bindingSource { 
@@ -20,7 +20,7 @@ namespace CreatioAppsConfig
 
         public string FileName { get; set; }
 
-        public Form2()
+        public EditConnectionSrtings()
         {
             InitializeComponent();
         }

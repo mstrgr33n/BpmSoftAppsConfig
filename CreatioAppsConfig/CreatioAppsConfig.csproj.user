@@ -4,10 +4,10 @@
     <Compile Update="CreateApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
+    <Compile Update="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form2.cs">
+    <Compile Update="EditConnectionSrtings.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
