@@ -36,7 +36,7 @@
             this.ProjectNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CreateButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -109,15 +109,15 @@
             this.CreateButton.UseVisualStyleBackColor = true;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
-            // CancelButton
+            // CancelBtn
             // 
-            this.CancelButton.Location = new System.Drawing.Point(713, 451);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 8;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelBtn.Location = new System.Drawing.Point(713, 451);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.CancelBtn.TabIndex = 8;
+            this.CancelBtn.Text = "Cancel";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // statusStrip1
             // 
@@ -179,7 +179,7 @@
             this.Controls.Add(this.PortNumber);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ProjectNameBox);
@@ -208,7 +208,7 @@
         private System.Windows.Forms.TextBox ProjectNameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CreateButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;

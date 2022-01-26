@@ -153,7 +153,7 @@ namespace CreatioAppsConfig
             CreateButton.Enabled = !CreateButton.Enabled;
             ProjectNameBox.Enabled = !ProjectNameBox.Enabled;
             TempPathButton.Enabled = !TempPathButton.Enabled;
-            CancelButton.Enabled = !CancelButton.Enabled;
+            CancelBtn.Enabled = !CancelBtn.Enabled;
             PortNumber.Enabled = !PortNumber.Enabled;
         }
 
