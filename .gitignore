@@ -1,7 +1,3 @@
 .vs
-CreatioAppsConfig/bin
-CreatioAppsConfig/obj
-CreatioAppsConfig/obj/Debug/net5.0-windows/CreatioAppsConfig.csproj.AssemblyReference.cache
-*.cache
-CreatioAppsConfig/obj/Debug/net5.0-windows/*.cache
-/images/screenshots
+bin/
+obj/
