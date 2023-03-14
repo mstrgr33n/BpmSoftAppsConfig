@@ -51,6 +51,7 @@ namespace CreatioManagmentTools
                 TempPathTextBox.Text = _settings.TempPath;
                 BaseUrlTextBox.Text = _settings.BaseUrl;
                 InstallFilesUrlTextBox.Text = _settings.InstallFilesUrl;
+                InstallDemoFilesUrlTextBox.Text= _settings.InstallDemoFilesUrl;
                 BaseSiteNameTextBox.Text = _settings.BaseSiteName;
                 DefaultPortNumeric.Value = _settings.DefaultPort;
                 ConStrTextBox.Text = _settings.ConStrFileName;
@@ -86,6 +87,7 @@ namespace CreatioManagmentTools
             s.TempPath = TempPathTextBox.Text;
             s.BaseUrl = BaseUrlTextBox.Text;
             s.InstallFilesUrl = InstallFilesUrlTextBox.Text;
+            s.InstallDemoFilesUrl = InstallDemoFilesUrlTextBox.Text;
             s.BaseSiteName = BaseSiteNameTextBox.Text;
             s.DefaultPort = (int)DefaultPortNumeric.Value;
             s.ConStrFileName = ConStrTextBox.Text;

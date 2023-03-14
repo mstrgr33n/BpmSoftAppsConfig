@@ -106,7 +106,7 @@
             // 
             this.propertiseToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("propertiseToolStripMenuItem.Image")));
             this.propertiseToolStripMenuItem.Name = "propertiseToolStripMenuItem";
-            this.propertiseToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.propertiseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.propertiseToolStripMenuItem.Text = "Properties";
             this.propertiseToolStripMenuItem.Click += new System.EventHandler(this.propertiseToolStripMenuItem_Click);
             // 

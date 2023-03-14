@@ -89,5 +89,20 @@ namespace CreatioManagmentTools
             form.ShowDialog();
 
         }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            bundleList = new List<KeyValuePair<string, string>>();
+            BundleListBox.Items.Clear();
+            service = new GetCreatioDistr(settings.BaseUrl);
+            service.BaseUri = settings.InstallDemoFilesUrl;
+            var items = service.GetNodes();
+            if (items.Count == 0) return;
+            for (int i = 1; i < items.Count; i++)
+            {
+                bundleList.Add(new KeyValuePair<string, string>(items[i].InnerText, items[i].Attributes[0].Value));
+            }
+            BundleListBox.Items.AddRange(bundleList.OrderByDescending(x => x.Key).Select(x => x.Key).ToArray());
+        }
     }
 }

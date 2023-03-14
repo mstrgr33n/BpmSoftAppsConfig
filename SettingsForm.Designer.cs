@@ -72,6 +72,9 @@
             this.SqlPathTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.PSQLPathBtn = new System.Windows.Forms.Button();
+            this.PSQLPathTextBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.PSQLPortNumeric = new System.Windows.Forms.NumericUpDown();
             this.PSQLPasswordTextBox = new System.Windows.Forms.TextBox();
             this.PSQLUserIDTextBox = new System.Windows.Forms.TextBox();
@@ -86,9 +89,8 @@
             this.CancelTSBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.SaveTSBtn = new System.Windows.Forms.ToolStripButton();
-            this.label18 = new System.Windows.Forms.Label();
-            this.PSQLPathTextBox = new System.Windows.Forms.TextBox();
-            this.PSQLPathBtn = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.InstallDemoFilesUrlTextBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RedisPort)).BeginInit();
@@ -113,6 +115,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.InstallDemoFilesUrlTextBox);
+            this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.RedisPort);
             this.tabPage1.Controls.Add(this.RedisHostTextBox);
             this.tabPage1.Controls.Add(this.label14);
@@ -258,9 +262,9 @@
             // 
             this.InstallFilesUrlTextBox.Location = new System.Drawing.Point(104, 102);
             this.InstallFilesUrlTextBox.Name = "InstallFilesUrlTextBox";
-            this.InstallFilesUrlTextBox.Size = new System.Drawing.Size(600, 20);
+            this.InstallFilesUrlTextBox.Size = new System.Drawing.Size(238, 20);
             this.InstallFilesUrlTextBox.TabIndex = 27;
-            this.InstallFilesUrlTextBox.Text = "/support/downloads/!Release/installation_files/";
+            this.InstallFilesUrlTextBox.Text = "/Release/";
             // 
             // label4
             // 
@@ -529,6 +533,32 @@
             this.tabPage3.Text = "PostgreSQL";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // PSQLPathBtn
+            // 
+            this.PSQLPathBtn.Location = new System.Drawing.Point(680, 182);
+            this.PSQLPathBtn.Name = "PSQLPathBtn";
+            this.PSQLPathBtn.Size = new System.Drawing.Size(75, 23);
+            this.PSQLPathBtn.TabIndex = 15;
+            this.PSQLPathBtn.Text = "Select path";
+            this.PSQLPathBtn.UseVisualStyleBackColor = true;
+            this.PSQLPathBtn.Click += new System.EventHandler(this.PSQLPathBtn_Click);
+            // 
+            // PSQLPathTextBox
+            // 
+            this.PSQLPathTextBox.Location = new System.Drawing.Point(143, 183);
+            this.PSQLPathTextBox.Name = "PSQLPathTextBox";
+            this.PSQLPathTextBox.Size = new System.Drawing.Size(512, 20);
+            this.PSQLPathTextBox.TabIndex = 14;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(17, 187);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(89, 13);
+            this.label18.TabIndex = 13;
+            this.label18.Text = "PostgreSQL Path";
+            // 
             // PSQLPortNumeric
             // 
             this.PSQLPortNumeric.Location = new System.Drawing.Point(143, 79);
@@ -662,31 +692,22 @@
             this.SaveTSBtn.Text = "Save";
             this.SaveTSBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
-            // label18
+            // label21
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(17, 187);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(89, 13);
-            this.label18.TabIndex = 13;
-            this.label18.Text = "PostgreSQL Path";
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(355, 106);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(105, 13);
+            this.label21.TabIndex = 45;
+            this.label21.Text = "Install Demo Files Url";
             // 
-            // PSQLPathTextBox
+            // InstallDemoFilesUrlTextBox
             // 
-            this.PSQLPathTextBox.Location = new System.Drawing.Point(143, 183);
-            this.PSQLPathTextBox.Name = "PSQLPathTextBox";
-            this.PSQLPathTextBox.Size = new System.Drawing.Size(512, 20);
-            this.PSQLPathTextBox.TabIndex = 14;
-            // 
-            // PSQLPathBtn
-            // 
-            this.PSQLPathBtn.Location = new System.Drawing.Point(680, 182);
-            this.PSQLPathBtn.Name = "PSQLPathBtn";
-            this.PSQLPathBtn.Size = new System.Drawing.Size(75, 23);
-            this.PSQLPathBtn.TabIndex = 15;
-            this.PSQLPathBtn.Text = "Select path";
-            this.PSQLPathBtn.UseVisualStyleBackColor = true;
-            this.PSQLPathBtn.Click += new System.EventHandler(this.PSQLPathBtn_Click);
+            this.InstallDemoFilesUrlTextBox.Location = new System.Drawing.Point(466, 102);
+            this.InstallDemoFilesUrlTextBox.Name = "InstallDemoFilesUrlTextBox";
+            this.InstallDemoFilesUrlTextBox.Size = new System.Drawing.Size(238, 20);
+            this.InstallDemoFilesUrlTextBox.TabIndex = 46;
+            this.InstallDemoFilesUrlTextBox.Text = "/ReleaseDemo/";
             // 
             // SettingsForm
             // 
@@ -780,5 +801,7 @@
         private System.Windows.Forms.Button PSQLPathBtn;
         private System.Windows.Forms.TextBox PSQLPathTextBox;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox InstallDemoFilesUrlTextBox;
+        private System.Windows.Forms.Label label21;
     }
 }

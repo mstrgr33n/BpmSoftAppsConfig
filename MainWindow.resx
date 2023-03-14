@@ -124,7 +124,7 @@
   <data name="addProjectToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAA+hJREFUaEPtlslPU1EYxXGecIA4JkZjwsqtUjUu+CvcmBg30gqIEwvjwmAMoiKD
+        EAAACxABrSO9dQAAA+hJREFUaEPtlslPU1EYxXGecIA4JkZjwsqtUjUu+CvcmBg30gqIEwvjwmAMoiKD
         iApFEGILKvNQRQREsRjjBFShLVMFI+Kwc2Mi7ed33ntXb7Woi7bS5J3kF5rHHc6597v3vShdunTp0qVL
         l64ZpK2JVvoTCemdc7WmM1Mw2e38FJD4RKs3IgI8dn2msg4PXesY/QGe6QHCoekC2COuhO77B3g08DFS
         A+Cvh7oQwGj1bjGa52lNZ6b8S0iltN1DD/sjKIDd9cnPPHjwOgICwNzWRIvPzuUimy9p81Dnqw8Ub7JO
@@ -175,7 +175,7 @@
   <data name="propertiseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAapJREFUaEPtmclKBEEQROei/oLLVb/NDfXmcvPzRFzO4vgVouBJI6ATmkKJysrO
+        DgAACw4BQL7hQQAAAapJREFUaEPtmclKBEEQROei/oLLVb/NDfXmcvPzRFzO4vgVouBJI6ATmkKJysrO
         dgbqQUBTmXRWdsxUJ/Si0+l01oYD6A1aQvtcEGTnu7mBvgfxWpGd7+YWsgK8VmTnu8na0CZ0Ar1Als/r
         Y4ixychoYBd6giyv1CO0A03C1A1sQc+Q5fwlNhhyotVi1cAFZPEv6BKiI9TVsGbxM6iJiMWqgXvI4txw
         yTVk8TsueIlarBr4hCz+20PgmsU/uOAlarFqgJuyOO9ZsgdZ/J0LXqIWqwbG9+e9SsYvtqafUNRi1cA5

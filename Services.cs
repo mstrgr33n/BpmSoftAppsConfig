@@ -311,17 +311,26 @@ namespace CreatioManagmentTools
                 var dataPart = dataItem.Add.Where(x => names.Contains(x.Name));
                 foreach (var dataPartItem in dataPart)
                 {
-                    var dict = dataPartItem.ConnectionString.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(part => part.Split('='))
-                    .ToDictionary(split => split[0].Trim(), split => split[1]);
-                   if (dataPartItem.Name == "redis")
-                    {
-                        AddRedisData(dict, cfg);
-                    } else
-                    {
-                        AddDBData(dict, cfg);
-                    }
+                    var dictRaw = dataPartItem.ConnectionString.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(part => part.Split('='));
 
+                    try
+                    {
+                        var dict = dictRaw.ToDictionary(split => split[0].Trim(), split => split[1]);
+                        if (dataPartItem.Name == "redis")
+                        {
+                            AddRedisData(dict, cfg);
+                        }
+                        else
+                        {
+                            AddDBData(dict, cfg);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
+                        throw new Exception($"Error string {dataPartItem.Name}:\n{dataPartItem.ConnectionString}\nin file:\n{dataItem.Path}");
+                    }
                 }
                 configLst.Add(cfg);
             }

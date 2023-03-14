@@ -15,12 +15,15 @@ namespace CreatioManagmentTools
         {
             public string AppsPath { get; set; }
             public string TempPath { get; set; }
-            [DefaultValue(@"https://ftp.bpmonline.com")]
+            [DefaultValue(@"https://files.corporate-domain.ru")]
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, NullValueHandling = NullValueHandling.Ignore)]
             public string BaseUrl { get; set; }
-            [DefaultValue(@"/support/downloads/!Release/installation_files/")]
+            [DefaultValue(@"/Release/")]
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, NullValueHandling = NullValueHandling.Ignore)]
             public string InstallFilesUrl { get; set; }
+            [DefaultValue(@"/ReleaseDemo/")]
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, NullValueHandling = NullValueHandling.Ignore)]
+            public string InstallDemoFilesUrl { get; set; }
             public string BaseSiteName { get; set; }
             [DefaultValue(80)]
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, NullValueHandling = NullValueHandling.Ignore)]
