@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatioManagmentTools", "CreatioManagmentTools.csproj", "{E1C73FDE-418C-456B-836B-20BD5AAC3D9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BpmSoftManagmentTools", "BpmSoftManagmentTools.csproj", "{E1C73FDE-418C-456B-836B-20BD5AAC3D9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
