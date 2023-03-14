@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E1C73FDE-418C-456B-836B-20BD5AAC3D9C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>GoodProgramManagmentTools</RootNamespace>
-    <AssemblyName>GoodProgramManagmentTools</AssemblyName>
+    <RootNamespace>BpmSoftManagmentTools</RootNamespace>
+    <AssemblyName>BpmSoftManagmentTools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
