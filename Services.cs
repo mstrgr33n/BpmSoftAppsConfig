@@ -326,9 +326,8 @@ namespace CreatioManagmentTools
                             AddDBData(dict, cfg);
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-
                         throw new Exception($"Error string {dataPartItem.Name}:\n{dataPartItem.ConnectionString}\nin file:\n{dataItem.Path}");
                     }
                 }
@@ -339,10 +338,15 @@ namespace CreatioManagmentTools
 
         private void AddRedisData(Dictionary<string, string> dict, Settings.MainGridData data)
         {
-            string RedisPort, RedisHost, RedisDB;
+            string RedisPort, RedisHost, RedisDBStr;
+            int RedisDB;
             dict.TryGetValue("port", out RedisPort);
             dict.TryGetValue("host", out RedisHost);
-            dict.TryGetValue("db", out RedisDB);
+            dict.TryGetValue("db", out RedisDBStr);
+            if (!Int32.TryParse(RedisDBStr, out RedisDB))
+            {
+                RedisDB = -1;
+            }
             data.RedisDB = RedisDB;
             data.RedisHost = RedisHost;
             data.RedisPort = RedisPort;

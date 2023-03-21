@@ -75,7 +75,7 @@ namespace CreatioManagmentTools
             public string DBName { get; set; }
             public string RedisHost { get; set; }
             public string RedisPort { get; set; }
-            public string RedisDB { get; set; }
+            public int RedisDB { get; set; }
             public string Path { get; set; }
         }
     }
