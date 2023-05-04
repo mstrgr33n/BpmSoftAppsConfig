@@ -34,6 +34,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.InstallDemoFilesUrlTextBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.RedisPort = new System.Windows.Forms.NumericUpDown();
             this.RedisHostTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -85,12 +87,21 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.proxyPort = new System.Windows.Forms.NumericUpDown();
+            this.proxyPass = new System.Windows.Forms.TextBox();
+            this.proxyUser = new System.Windows.Forms.TextBox();
+            this.proxyUrl = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.useProxy = new System.Windows.Forms.CheckBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CancelTSBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.SaveTSBtn = new System.Windows.Forms.ToolStripButton();
-            this.label21 = new System.Windows.Forms.Label();
-            this.InstallDemoFilesUrlTextBox = new System.Windows.Forms.TextBox();
+            this.useProxyAuth = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RedisPort)).BeginInit();
@@ -98,6 +109,8 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PSQLPortNumeric)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.proxyPort)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +119,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -144,6 +158,23 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // InstallDemoFilesUrlTextBox
+            // 
+            this.InstallDemoFilesUrlTextBox.Location = new System.Drawing.Point(466, 102);
+            this.InstallDemoFilesUrlTextBox.Name = "InstallDemoFilesUrlTextBox";
+            this.InstallDemoFilesUrlTextBox.Size = new System.Drawing.Size(238, 20);
+            this.InstallDemoFilesUrlTextBox.TabIndex = 46;
+            this.InstallDemoFilesUrlTextBox.Text = "/ReleaseDemo/";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(355, 106);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(105, 13);
+            this.label21.TabIndex = 45;
+            this.label21.Text = "Install Demo Files Url";
             // 
             // RedisPort
             // 
@@ -652,6 +683,111 @@
             this.label15.TabIndex = 0;
             this.label15.Text = "PostgreSQL\r\nconnection string";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.useProxyAuth);
+            this.tabPage4.Controls.Add(this.proxyPort);
+            this.tabPage4.Controls.Add(this.proxyPass);
+            this.tabPage4.Controls.Add(this.proxyUser);
+            this.tabPage4.Controls.Add(this.proxyUrl);
+            this.tabPage4.Controls.Add(this.label22);
+            this.tabPage4.Controls.Add(this.label23);
+            this.tabPage4.Controls.Add(this.label24);
+            this.tabPage4.Controls.Add(this.label25);
+            this.tabPage4.Controls.Add(this.useProxy);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(803, 265);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Proxy";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // proxyPort
+            // 
+            this.proxyPort.Location = new System.Drawing.Point(115, 70);
+            this.proxyPort.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.proxyPort.Name = "proxyPort";
+            this.proxyPort.Size = new System.Drawing.Size(120, 20);
+            this.proxyPort.TabIndex = 70;
+            this.proxyPort.Value = new decimal(new int[] {
+            3128,
+            0,
+            0,
+            0});
+            // 
+            // proxyPass
+            // 
+            this.proxyPass.Location = new System.Drawing.Point(115, 138);
+            this.proxyPass.Name = "proxyPass";
+            this.proxyPass.Size = new System.Drawing.Size(239, 20);
+            this.proxyPass.TabIndex = 69;
+            // 
+            // proxyUser
+            // 
+            this.proxyUser.Location = new System.Drawing.Point(115, 104);
+            this.proxyUser.Name = "proxyUser";
+            this.proxyUser.Size = new System.Drawing.Size(239, 20);
+            this.proxyUser.TabIndex = 68;
+            // 
+            // proxyUrl
+            // 
+            this.proxyUrl.Location = new System.Drawing.Point(115, 36);
+            this.proxyUrl.Name = "proxyUrl";
+            this.proxyUrl.Size = new System.Drawing.Size(239, 20);
+            this.proxyUrl.TabIndex = 67;
+            this.proxyUrl.Text = "localhost";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(25, 142);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(53, 13);
+            this.label22.TabIndex = 66;
+            this.label22.Text = "Password";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(49, 107);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(29, 13);
+            this.label23.TabIndex = 65;
+            this.label23.Text = "User";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(52, 74);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(26, 13);
+            this.label24.TabIndex = 64;
+            this.label24.Text = "Port";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(40, 40);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(38, 13);
+            this.label25.TabIndex = 63;
+            this.label25.Text = "Server";
+            // 
+            // useProxy
+            // 
+            this.useProxy.AutoSize = true;
+            this.useProxy.Location = new System.Drawing.Point(403, 38);
+            this.useProxy.Name = "useProxy";
+            this.useProxy.Size = new System.Drawing.Size(74, 17);
+            this.useProxy.TabIndex = 62;
+            this.useProxy.Text = "Use Proxy";
+            this.useProxy.UseVisualStyleBackColor = true;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -692,22 +828,15 @@
             this.SaveTSBtn.Text = "Save";
             this.SaveTSBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
-            // label21
+            // useProxyAuth
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(355, 106);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(105, 13);
-            this.label21.TabIndex = 45;
-            this.label21.Text = "Install Demo Files Url";
-            // 
-            // InstallDemoFilesUrlTextBox
-            // 
-            this.InstallDemoFilesUrlTextBox.Location = new System.Drawing.Point(466, 102);
-            this.InstallDemoFilesUrlTextBox.Name = "InstallDemoFilesUrlTextBox";
-            this.InstallDemoFilesUrlTextBox.Size = new System.Drawing.Size(238, 20);
-            this.InstallDemoFilesUrlTextBox.TabIndex = 46;
-            this.InstallDemoFilesUrlTextBox.Text = "/ReleaseDemo/";
+            this.useProxyAuth.AutoSize = true;
+            this.useProxyAuth.Location = new System.Drawing.Point(403, 107);
+            this.useProxyAuth.Name = "useProxyAuth";
+            this.useProxyAuth.Size = new System.Drawing.Size(112, 17);
+            this.useProxyAuth.TabIndex = 71;
+            this.useProxyAuth.Text = "Use auth for proxy";
+            this.useProxyAuth.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -734,6 +863,9 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PSQLPortNumeric)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.proxyPort)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -803,5 +935,16 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox InstallDemoFilesUrlTextBox;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.NumericUpDown proxyPort;
+        private System.Windows.Forms.TextBox proxyPass;
+        private System.Windows.Forms.TextBox proxyUser;
+        private System.Windows.Forms.TextBox proxyUrl;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.CheckBox useProxy;
+        private System.Windows.Forms.CheckBox useProxyAuth;
     }
 }

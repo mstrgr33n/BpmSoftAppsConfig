@@ -31,12 +31,13 @@ namespace CreatioManagmentTools
         private void SelectDistrib_Load(object sender, EventArgs e)
         {
             VersionListBox.SelectedIndexChanged -= VersionChanged;
-            service = new GetCreatioDistr(settings.BaseUrl);
+            service = new GetCreatioDistr(settings.BaseUrl, settings);
             service.BaseUri = settings.InstallFilesUrl;
             var items = service.GetNodes();
             if (items.Count == 0) return;
             for (int i = 1; i < items.Count; i++)
             {
+                if (items[i].InnerText.EndsWith(".txt")) continue;
                 versionList.Add(new KeyValuePair<string, string>(items[i].InnerText, items[i].Attributes[0].Value));
             }
             VersionListBox.Items.AddRange(versionList.OrderByDescending(x => x.Key).Select(x => x.Key).ToArray());
@@ -94,7 +95,7 @@ namespace CreatioManagmentTools
         {
             bundleList = new List<KeyValuePair<string, string>>();
             BundleListBox.Items.Clear();
-            service = new GetCreatioDistr(settings.BaseUrl);
+            service = new GetCreatioDistr(settings.BaseUrl, settings);
             service.BaseUri = settings.InstallDemoFilesUrl;
             var items = service.GetNodes();
             if (items.Count == 0) return;

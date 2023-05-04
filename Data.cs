@@ -67,6 +67,12 @@ namespace CreatioManagmentTools
             public string PSQLUserID { get; set; }
             public string PSQLPassword { get; set; }
             public string PSQLPath { get; set; }
+            public string proxyUrl { get; set; }
+            public bool useProxy { get; set; }
+            public bool useProxyAuth { get; set; }
+            public int proxyPort { get; set; }
+            public string proxyUser { get; set; }
+            public string proxyPass { get; set; }
         }
 
         public class MainGridData

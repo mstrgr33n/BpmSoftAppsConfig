@@ -71,6 +71,12 @@ namespace CreatioManagmentTools
                 PSQLUserIDTextBox.Text = _settings.PSQLUserID;
                 PSQLPasswordTextBox.Text = _settings.PSQLPassword;
                 PSQLPathTextBox.Text = _settings.PSQLPath;
+                useProxy.Checked = _settings.useProxy;
+                useProxyAuth.Checked = _settings.useProxyAuth;
+                proxyUrl.Text = _settings.proxyUrl;
+                proxyUser.Text = _settings.proxyUser;
+                proxyPass.Text = _settings.proxyPass;
+                proxyPort.Value = _settings.proxyPort;
             }
         }
 
@@ -107,6 +113,12 @@ namespace CreatioManagmentTools
             s.PSQLUserID = PSQLUserIDTextBox.Text;
             s.PSQLPassword = PSQLPasswordTextBox.Text;
             s.PSQLPath = PSQLPathTextBox.Text;
+            s.useProxy = useProxy.Checked;
+            s.useProxyAuth = useProxyAuth.Checked;
+            s.proxyUrl = proxyUrl.Text;
+            s.proxyUser = proxyUser.Text;
+            s.proxyPass = proxyPass.Text;
+            s.proxyPort = (int)proxyPort.Value;
             settings = s;
             services.SaveSettings(s);
         }

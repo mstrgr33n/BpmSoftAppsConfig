@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CreatioManagmentTools
 {
@@ -7,13 +9,15 @@ namespace CreatioManagmentTools
     {
         private readonly string _defaultURI;
         private string _uri;
+        private Settings.Settings _settings;
 
-        public GetCreatioDistr(string baseUri)
+        public GetCreatioDistr(string baseUri, Settings.Settings settings = null)
         {
             _defaultURI = baseUri;
+            _settings = settings;
         }
-        
 
+        
         public string BaseUri
         {
             get { return string.IsNullOrEmpty(_uri) ? _defaultURI : _uri; }
@@ -25,6 +29,22 @@ namespace CreatioManagmentTools
             var request = (HttpWebRequest)WebRequest.Create(BaseUri);
             request.Method = "GET";
             request.ServerCertificateValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+           
+            if (_settings.useProxy)
+            {
+                WebProxy myProxy = new WebProxy();
+
+                int port = _settings.proxyPort;
+                string url = _settings.proxyUrl;
+                Uri newUri = new Uri(string.Format("{0}:{1}", url, port));
+                myProxy.Address = newUri;
+                if (_settings.useProxyAuth)
+                {
+                    myProxy.Credentials = new NetworkCredential(_settings.proxyUser, _settings.proxyPass);
+                }
+                request.Proxy = myProxy;
+            }
+
 
             using (var webResponse = request.GetResponse())
             {

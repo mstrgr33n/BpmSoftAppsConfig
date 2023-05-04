@@ -100,6 +100,20 @@ namespace CreatioManagmentTools
                 client = new WebClient();
                 client.DownloadFileCompleted += client_DownloadFileCompleted;
                 client.DownloadProgressChanged += client_DownloadProgressChanged;
+                if (settings.useProxy)
+                {
+                    WebProxy myProxy = new WebProxy();
+
+                    int port = settings.proxyPort;
+                    string url = settings.proxyUrl;
+                    Uri newUri = new Uri(string.Format("{0}:{1}", url, port));
+                    myProxy.Address = newUri;
+                    if (settings.useProxyAuth)
+                    {
+                        myProxy.Credentials = new NetworkCredential(settings.proxyUser, settings.proxyPass);
+                    }
+                    client.Proxy = myProxy;
+                }
             }
             client.DownloadFileAsync(new Uri(FileUri), ZipFilePath);
         }
