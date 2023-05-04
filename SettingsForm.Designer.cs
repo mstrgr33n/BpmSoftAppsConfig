@@ -341,7 +341,7 @@
             this.BaseUrlTextBox.Name = "BaseUrlTextBox";
             this.BaseUrlTextBox.Size = new System.Drawing.Size(600, 20);
             this.BaseUrlTextBox.TabIndex = 26;
-            this.BaseUrlTextBox.Text = "https://ftp.bpmonline.com";
+            this.BaseUrlTextBox.Text = "https://files.corporate-domain.ru/";
             // 
             // TempPathTextBox
             // 
