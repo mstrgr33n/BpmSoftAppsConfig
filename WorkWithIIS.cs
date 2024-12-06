@@ -7,7 +7,7 @@ namespace CreatioManagmentTools
 {
     internal class WorkWithIIS
     {
-        public void CreateSite(string projectName, string port, string path, string sitename = "")
+        public void CreateSite(string projectName, string port, string path, string sitename = "", bool isCoreVersion = false)
         {
             string ProjectName = projectName, Port = port, Path = path;
             StringBuilder sb = new StringBuilder();
@@ -20,14 +20,24 @@ namespace CreatioManagmentTools
             }
             sb.AppendLine(websiteString);
 
-            var pathWebApp = System.IO.Path.Combine(Path, "Terrasoft.WebApp");
-            if (System.IO.Directory.Exists(pathWebApp))
+            if (isCoreVersion)
             {
-                sb.AppendLine($"New-WebApplication -Site \"{ProjectName}\" -Name \"0\" -PhysicalPath \"{Path}\\Terrasoft.WebApp\" -ApplicationPool \"{ProjectName}\" -Force");
-            } else
+                sb.AppendLine("Remove-WebConfigurationLock -Filter \"system.webServer/security/authentication/windowsAuthentication\" -PSPath \"MACHINE/WEBROOT/APPHOST\"");
+                sb.AppendLine("& $env:SystemRoot\\system32\\inetsrv\\appcmd.exe unlock config /section:system.webServer/security/authentication/windowsAuthentication");
+                sb.AppendLine($"Set-WebConfigurationProperty -filter \"/system.webServer/security/authentication/windowsAuthentication\" -name \"enabled\" -value \"True\" -PSPath \"IIS:\\Sites\\{projectName}\"");
+            } else 
             {
-                sb.AppendLine($"New-WebApplication -Site \"{ProjectName}\" -Name \"0\" -PhysicalPath \"{Path}\\BPMSoft.WebApp\" -ApplicationPool \"{ProjectName}\" -Force");
+                var pathWebApp = System.IO.Path.Combine(Path, "Terrasoft.WebApp");
+                if (System.IO.Directory.Exists(pathWebApp))
+                {
+                    sb.AppendLine($"New-WebApplication -Site \"{ProjectName}\" -Name \"0\" -PhysicalPath \"{Path}\\Terrasoft.WebApp\" -ApplicationPool \"{ProjectName}\" -Force");
+                }
+                else
+                {
+                    sb.AppendLine($"New-WebApplication -Site \"{ProjectName}\" -Name \"0\" -PhysicalPath \"{Path}\\BPMSoft.WebApp\" -ApplicationPool \"{ProjectName}\" -Force");
+                }
             }
+            
 
             var script = sb.ToString();
 

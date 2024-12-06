@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Compression;
+using System.Text.RegularExpressions;
 
 namespace CreatioManagmentTools
 {
@@ -40,7 +41,7 @@ namespace CreatioManagmentTools
                 SiteNameTextBox.Enabled = false;
             }
 
-            DBPassTB.Enabled = FileName.Contains("PostgreSQL");
+            DBPassTB.Enabled = FileName.ToLower().Contains("postgre");
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -99,7 +100,8 @@ namespace CreatioManagmentTools
             ZipFile.ExtractToDirectory(ZipFilePath, ExtractPath);
             ProcessLogBox.Invoke(new Action(() => ProcessLogBox.Items.Add("Distribs extracted")));
             ProcessLogBox.Invoke(new Action(() => ProcessLogBox.Items.Add("Create IIS configs...")));
-            new WorkWithIIS().CreateSite(ProjectTextBox.Text, PortBox.Value.ToString(), ExtractPath, SiteNameTextBox.Text);
+            var isCoreVersion = FileName.ToLower().Contains("core");
+            new WorkWithIIS().CreateSite(ProjectTextBox.Text, PortBox.Value.ToString(), ExtractPath, SiteNameTextBox.Text, isCoreVersion);
             ProcessLogBox.Invoke(new Action(() => ProcessLogBox.Items.Add("IIS config added")));
             ProcessLogBox.Invoke(new Action(() => ProcessLogBox.Items.Add("Restore DB...")));
             if (FileName.Contains("MSSQL")) new MsSqlWorker(settings).RestoreDb(ProjectTextBox.Text, RedisDBNum.Value);
@@ -161,5 +163,15 @@ namespace CreatioManagmentTools
             }
         }
 
+        private void ProjectTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Regex reg = new Regex("[-_'\"]");
+            
+            if (FileName.ToLower().Contains("postgre") && reg.IsMatch(ProjectTextBox.Text))
+            {
+                Regex rgx = new Regex("[^a-zA-Z0-9]");
+                ProjectTextBox.Text = rgx.Replace(ProjectTextBox.Text, "");
+            }
+        }
     }
 }

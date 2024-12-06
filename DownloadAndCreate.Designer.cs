@@ -145,6 +145,7 @@
             this.ProjectTextBox.Name = "ProjectTextBox";
             this.ProjectTextBox.Size = new System.Drawing.Size(265, 20);
             this.ProjectTextBox.TabIndex = 5;
+            this.ProjectTextBox.TextChanged += new System.EventHandler(this.ProjectTextBox_TextChanged);
             // 
             // SiteNameTextBox
             // 
@@ -187,6 +188,11 @@
             // RedisDBNum
             // 
             this.RedisDBNum.Location = new System.Drawing.Point(331, 79);
+            this.RedisDBNum.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.RedisDBNum.Name = "RedisDBNum";
             this.RedisDBNum.Size = new System.Drawing.Size(75, 20);
             this.RedisDBNum.TabIndex = 9;
