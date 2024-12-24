@@ -46,6 +46,8 @@ namespace CreatioManagmentTools
             cs = string.Format(template, tplParams);
             // fileCS = cs;
             RunCommand(cs, CreateTypeScript());
+            var updateText = "update \"SysAdminUnit\" set \"ForceChangePassword\" = false where \"Name\" = 'Supervisor'";
+            RunCommand(cs, updateText);
             tplParams[3] = projectName;
             tplParams[4] = dbPassword;
             fileCS = string.Format(template, tplParams);

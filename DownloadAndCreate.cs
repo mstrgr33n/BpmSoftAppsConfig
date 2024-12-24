@@ -104,8 +104,8 @@ namespace CreatioManagmentTools
             new WorkWithIIS().CreateSite(ProjectTextBox.Text, PortBox.Value.ToString(), ExtractPath, SiteNameTextBox.Text, isCoreVersion);
             ProcessLogBox.Invoke(new Action(() => ProcessLogBox.Items.Add("IIS config added")));
             ProcessLogBox.Invoke(new Action(() => ProcessLogBox.Items.Add("Restore DB...")));
-            if (FileName.Contains("MSSQL")) new MsSqlWorker(settings).RestoreDb(ProjectTextBox.Text, RedisDBNum.Value);
-            if (FileName.Contains("PostgreSQL")) new PSQLWorker(settings).RestoreDb(ProjectTextBox.Text, RedisDBNum.Value, DBPassTB.Text);
+            if (FileName.ToLower().Contains("mssql")) new MsSqlWorker(settings).RestoreDb(ProjectTextBox.Text, RedisDBNum.Value);
+            if (FileName.ToLower().Contains("postgresql")) new PSQLWorker(settings).RestoreDb(ProjectTextBox.Text, RedisDBNum.Value, DBPassTB.Text);
             //ProcessLogBox.Invoke(new Action(() => ProcessLogBox.Items.Add("Restore DB completed")));
             ProcessLogBox.Invoke(new Action(() => ProcessLogBox.Items.Add("Complete!!!")));
         }

@@ -60,6 +60,8 @@ namespace CreatioManagmentTools
                 Directory.CreateDirectory(dbPath);
             }
             scriptList.Insert(0, string.Format(sqlRestore, projectName, file, bdFile.DataName, bdFile.LogName, dbPath));
+            var updateText = @$"USE [{projectName}]; update ""SysAdminUnit"" set ""ForceChangePassword"" = 0 where ""Name"" = 'Supervisor';";
+            scriptList.Add(updateText);
 
             try
             {
@@ -68,9 +70,9 @@ namespace CreatioManagmentTools
                     RunScript(script);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             UpdateConnectionString(projectName);
         }
