@@ -29,222 +29,226 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DownloadAndCreate));
-            this.ProcessLogBox = new System.Windows.Forms.ListBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ProjectTextBox = new System.Windows.Forms.TextBox();
-            this.SiteNameTextBox = new System.Windows.Forms.TextBox();
-            this.PortBox = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.RedisDBNum = new System.Windows.Forms.NumericUpDown();
-            this.DBPassTB = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PortBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RedisDBNum)).BeginInit();
-            this.SuspendLayout();
+            ProcessLogBox = new System.Windows.Forms.ListBox();
+            toolStrip1 = new System.Windows.Forms.ToolStrip();
+            toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            ProjectTextBox = new System.Windows.Forms.TextBox();
+            SiteNameTextBox = new System.Windows.Forms.TextBox();
+            PortBox = new System.Windows.Forms.NumericUpDown();
+            label4 = new System.Windows.Forms.Label();
+            RedisDBNum = new System.Windows.Forms.NumericUpDown();
+            DBPassTB = new System.Windows.Forms.TextBox();
+            label6 = new System.Windows.Forms.Label();
+            RegisterDomain = new System.Windows.Forms.CheckBox();
+            toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PortBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RedisDBNum).BeginInit();
+            SuspendLayout();
             // 
             // ProcessLogBox
             // 
-            this.ProcessLogBox.Enabled = false;
-            this.ProcessLogBox.FormattingEnabled = true;
-            this.ProcessLogBox.Location = new System.Drawing.Point(0, 172);
-            this.ProcessLogBox.Name = "ProcessLogBox";
-            this.ProcessLogBox.Size = new System.Drawing.Size(515, 186);
-            this.ProcessLogBox.TabIndex = 0;
+            ProcessLogBox.Enabled = false;
+            ProcessLogBox.FormattingEnabled = true;
+            ProcessLogBox.ItemHeight = 15;
+            ProcessLogBox.Location = new System.Drawing.Point(0, 198);
+            ProcessLogBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ProcessLogBox.Name = "ProcessLogBox";
+            ProcessLogBox.Size = new System.Drawing.Size(600, 214);
+            ProcessLogBox.TabIndex = 0;
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripLabel1,
-            this.toolStripButton2,
-            this.toolStripProgressBar1,
-            this.toolStripLabel2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 361);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(515, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButton1, toolStripLabel1, toolStripButton2, toolStripProgressBar1, toolStripLabel2 });
+            toolStrip1.Location = new System.Drawing.Point(0, 417);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new System.Drawing.Size(601, 28);
+            toolStrip1.TabIndex = 1;
+            toolStrip1.Text = "toolStrip1";
             // 
             // toolStripButton1
             // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(56, 22);
-            this.toolStripButton1.Text = "Close";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripButton1.Image = (System.Drawing.Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new System.Drawing.Size(56, 25);
+            toolStripButton1.Text = "Close";
+            toolStripButton1.Click += toolStripButton1_Click;
             // 
             // toolStripLabel1
             // 
-            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(19, 22);
-            this.toolStripLabel1.Text = "    ";
+            toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripLabel1.Name = "toolStripLabel1";
+            toolStripLabel1.Size = new System.Drawing.Size(19, 25);
+            toolStripLabel1.Text = "    ";
             // 
             // toolStripButton2
             // 
-            this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(51, 22);
-            this.toolStripButton2.Text = "Start";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            toolStripButton2.Image = (System.Drawing.Image)resources.GetObject("toolStripButton2.Image");
+            toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButton2.Name = "toolStripButton2";
+            toolStripButton2.Size = new System.Drawing.Size(51, 25);
+            toolStripButton2.Text = "Start";
+            toolStripButton2.Click += toolStripButton2_Click;
             // 
             // toolStripProgressBar1
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 22);
+            toolStripProgressBar1.Name = "toolStripProgressBar1";
+            toolStripProgressBar1.Size = new System.Drawing.Size(117, 25);
             // 
             // toolStripLabel2
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(0, 22);
+            toolStripLabel2.Name = "toolStripLabel2";
+            toolStripLabel2.Size = new System.Drawing.Size(0, 25);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Project Name";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(14, 10);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(79, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Project Name";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Site Name";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(31, 51);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(61, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Site Name";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 79);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Port";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(66, 91);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(29, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Port";
             // 
             // ProjectTextBox
             // 
-            this.ProjectTextBox.Location = new System.Drawing.Point(97, 5);
-            this.ProjectTextBox.Name = "ProjectTextBox";
-            this.ProjectTextBox.Size = new System.Drawing.Size(265, 20);
-            this.ProjectTextBox.TabIndex = 5;
-            this.ProjectTextBox.TextChanged += new System.EventHandler(this.ProjectTextBox_TextChanged);
+            ProjectTextBox.Location = new System.Drawing.Point(113, 6);
+            ProjectTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ProjectTextBox.Name = "ProjectTextBox";
+            ProjectTextBox.Size = new System.Drawing.Size(308, 23);
+            ProjectTextBox.TabIndex = 5;
+            ProjectTextBox.TextChanged += ProjectTextBox_TextChanged;
             // 
             // SiteNameTextBox
             // 
-            this.SiteNameTextBox.Location = new System.Drawing.Point(97, 40);
-            this.SiteNameTextBox.Name = "SiteNameTextBox";
-            this.SiteNameTextBox.Size = new System.Drawing.Size(265, 20);
-            this.SiteNameTextBox.TabIndex = 6;
+            SiteNameTextBox.Location = new System.Drawing.Point(113, 46);
+            SiteNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            SiteNameTextBox.Name = "SiteNameTextBox";
+            SiteNameTextBox.Size = new System.Drawing.Size(308, 23);
+            SiteNameTextBox.TabIndex = 6;
             // 
             // PortBox
             // 
-            this.PortBox.Location = new System.Drawing.Point(97, 79);
-            this.PortBox.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.PortBox.Minimum = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            this.PortBox.Name = "PortBox";
-            this.PortBox.Size = new System.Drawing.Size(120, 20);
-            this.PortBox.TabIndex = 7;
-            this.PortBox.Value = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
+            PortBox.Location = new System.Drawing.Point(113, 91);
+            PortBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            PortBox.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            PortBox.Minimum = new decimal(new int[] { 80, 0, 0, 0 });
+            PortBox.Name = "PortBox";
+            PortBox.Size = new System.Drawing.Size(140, 23);
+            PortBox.TabIndex = 7;
+            PortBox.Value = new decimal(new int[] { 80, 0, 0, 0 });
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(257, 83);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Redis DB";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(300, 96);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(53, 15);
+            label4.TabIndex = 8;
+            label4.Text = "Redis DB";
             // 
             // RedisDBNum
             // 
-            this.RedisDBNum.Location = new System.Drawing.Point(331, 79);
-            this.RedisDBNum.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.RedisDBNum.Name = "RedisDBNum";
-            this.RedisDBNum.Size = new System.Drawing.Size(75, 20);
-            this.RedisDBNum.TabIndex = 9;
+            RedisDBNum.Location = new System.Drawing.Point(386, 91);
+            RedisDBNum.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RedisDBNum.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            RedisDBNum.Name = "RedisDBNum";
+            RedisDBNum.Size = new System.Drawing.Size(88, 23);
+            RedisDBNum.TabIndex = 9;
             // 
             // DBPassTB
             // 
-            this.DBPassTB.Location = new System.Drawing.Point(97, 118);
-            this.DBPassTB.Name = "DBPassTB";
-            this.DBPassTB.Size = new System.Drawing.Size(138, 20);
-            this.DBPassTB.TabIndex = 11;
+            DBPassTB.Location = new System.Drawing.Point(113, 136);
+            DBPassTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            DBPassTB.Name = "DBPassTB";
+            DBPassTB.Size = new System.Drawing.Size(160, 23);
+            DBPassTB.TabIndex = 11;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 121);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "PG Pass";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(41, 140);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(48, 15);
+            label6.TabIndex = 13;
+            label6.Text = "PG Pass";
+            // 
+            // RegisterDomain
+            // 
+            RegisterDomain.AutoSize = true;
+            RegisterDomain.Location = new System.Drawing.Point(444, 48);
+            RegisterDomain.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RegisterDomain.Name = "RegisterDomain";
+            RegisterDomain.Size = new System.Drawing.Size(131, 19);
+            RegisterDomain.TabIndex = 62;
+            RegisterDomain.Text = "Register subdomain";
+            RegisterDomain.UseVisualStyleBackColor = true;
             // 
             // DownloadAndCreate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 386);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.DBPassTB);
-            this.Controls.Add(this.RedisDBNum);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.PortBox);
-            this.Controls.Add(this.SiteNameTextBox);
-            this.Controls.Add(this.ProjectTextBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.ProcessLogBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "DownloadAndCreate";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Work...";
-            this.Load += new System.EventHandler(this.DownloadAndCreate_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PortBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RedisDBNum)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(601, 445);
+            Controls.Add(RegisterDomain);
+            Controls.Add(label6);
+            Controls.Add(DBPassTB);
+            Controls.Add(RedisDBNum);
+            Controls.Add(label4);
+            Controls.Add(PortBox);
+            Controls.Add(SiteNameTextBox);
+            Controls.Add(ProjectTextBox);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(toolStrip1);
+            Controls.Add(ProcessLogBox);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "DownloadAndCreate";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Work...";
+            Load += DownloadAndCreate_Load;
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PortBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RedisDBNum).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -266,5 +270,6 @@
         private System.Windows.Forms.NumericUpDown RedisDBNum;
         private System.Windows.Forms.TextBox DBPassTB;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox RegisterDomain;
     }
 }

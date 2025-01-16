@@ -56,7 +56,6 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="3.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.5.ReferenceAssemblies" Version="1.1.0" />
     <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="7.4.6" />
     <PackageReference Include="Microsoft.PowerShell.Commands.Management" Version="7.4.6" />
     <PackageReference Include="Microsoft.PowerShell.Commands.Utility" Version="7.4.6" />
@@ -76,5 +75,8 @@
     <PackageReference Include="System.Text.Encodings.Web" Version="9.0.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.0" />
     <PackageReference Include="System.Threading.Channels" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\regruapi\RegRuLibrary\RegRuLibrary.csproj" />
   </ItemGroup>
 </Project>
