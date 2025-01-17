@@ -1,18 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RegRuApi.API;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
-using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Compression;
-using System.Text.RegularExpressions;
-using RegRuApi.API;
-using Newtonsoft.Json;
 
 namespace CreatioManagmentTools
 {
