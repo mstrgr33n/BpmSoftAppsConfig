@@ -1,7 +1,6 @@
 ﻿using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
-using System.Windows.Forms;
 
 namespace CreatioManagmentTools
 {
@@ -35,13 +34,14 @@ namespace CreatioManagmentTools
                 if (System.IO.Directory.Exists(pathWebApp))
                 {
                     sb.AppendLine($"New-WebApplication -Site \"{ProjectName}\" -Name \"0\" -PhysicalPath \"{Path}\\Terrasoft.WebApp\" -ApplicationPool \"{ProjectName}\" -Force");
-                    targetFolder = System.IO.Path.Combine(Path, "Terrasoft.WebApp");
+                     // targetFolder = System.IO.Path.Combine(Path, "Terrasoft.WebApp");
                 }
                 else
                 {
                     sb.AppendLine($"New-WebApplication -Site \"{ProjectName}\" -Name \"0\" -PhysicalPath \"{Path}\\BPMSoft.WebApp\" -ApplicationPool \"{ProjectName}\" -Force");
-                    targetFolder = System.IO.Path.Combine(Path, "BPMSoft.WebApp");
+                    // targetFolder = System.IO.Path.Combine(Path, "BPMSoft.WebApp");
                 }
+                sb.AppendLine($"Set-ItemProperty \"IIS:\\Sites\\{ProjectName}\\0\" -Name preloadEnabled -Value True");
             }
 
             GrantAccessToPath(targetFolder, sb);
