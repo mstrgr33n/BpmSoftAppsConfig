@@ -41,6 +41,7 @@ namespace CreatioManagmentTools
                     sb.AppendLine($"New-WebApplication -Site \"{ProjectName}\" -Name \"0\" -PhysicalPath \"{Path}\\BPMSoft.WebApp\" -ApplicationPool \"{ProjectName}\" -Force");
                     // targetFolder = System.IO.Path.Combine(Path, "BPMSoft.WebApp");
                 }
+                targetFolder = Path;
                 sb.AppendLine($"Set-ItemProperty \"IIS:\\Sites\\{ProjectName}\\0\" -Name preloadEnabled -Value True");
             }
 
